@@ -14,6 +14,7 @@
     "add-token": "ts-node scripts/add-token.ts",
     "list-tokens": "ts-node scripts/list-tokens.ts",
     "list-markets": "ts-node scripts/list-markets.ts",
+    "set-visibility": "ts-node scripts/set-market-visibility.ts",
     "generate-leaderboard": "ts-node scripts/generate-leaderboard.ts"
   },
   "devDependencies": {

@@ -69,7 +69,10 @@ NEAR_ENV=mainnet yarn api add-token --token_id usn # token ID is contract ID
 NEAR_ENV=mainnet yarn api add-token --token_id near # "near" allowed for native near
 
 # Add market. Symbol must be lowercase.
-NEAR_ENV=mainnet yarn api add-market --market_id AFh8ZQdWvyBJqa9acpoKc1pXwQLAzbHmQpyNi3QfUocr --symbol pem/usn
+NEAR_ENV=mainnet yarn api add-market --market_id AAGR... --symbol foo/usdc
+
+# Make it visible. Markets are invisible by default.
+yarn api set-visibility --symbol foo/usdc --visibility true
 ```
 
 ## Known issues
