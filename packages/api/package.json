@@ -1,7 +1,7 @@
 {
   "name": "@tonic-foundation/data-api",
   "private": true,
-  "version": "0.0.4",
+  "version": "0.0.5",
   "homepage": "https://github.com/tonic-foundation/data-api",
   "repository": "tonic-foundation/data-api",
   "main": "index.js",
@@ -38,7 +38,7 @@
     "@sentry/node": "^6.19.7",
     "@sentry/tracing": "^6.19.7",
     "@tonic-foundation/config": "0.0.2",
-    "@tonic-foundation/indexer-models": "0.0.4",
+    "@tonic-foundation/indexer-models": "0.0.5",
     "@tonic-foundation/token": "^0.0.2",
     "@tonic-foundation/tonic": "^0.0.2",
     "@tonic-foundation/utils": "^0.0.2",

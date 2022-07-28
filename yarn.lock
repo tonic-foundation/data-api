@@ -260,7 +260,7 @@ __metadata:
     "@sentry/node": ^6.19.7
     "@sentry/tracing": ^6.19.7
     "@tonic-foundation/config": 0.0.2
-    "@tonic-foundation/indexer-models": 0.0.4
+    "@tonic-foundation/indexer-models": 0.0.5
     "@tonic-foundation/token": ^0.0.2
     "@tonic-foundation/tonic": ^0.0.2
     "@tonic-foundation/utils": ^0.0.2
@@ -296,7 +296,7 @@ __metadata:
   resolution: "@tonic-foundation/data-client@workspace:packages/client"
   dependencies:
     "@tonic-foundation/config": ^0.0.3
-    "@tonic-foundation/indexer-models": 0.0.4
+    "@tonic-foundation/indexer-models": 0.0.5
     "@tonic-foundation/tonic": ^0.0.7
     "@tonic-foundation/utils": ^0.0.2
     "@tsconfig/recommended": ^1.0.1
@@ -320,7 +320,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@tonic-foundation/indexer-models@0.0.4, @tonic-foundation/indexer-models@workspace:packages/models":
+"@tonic-foundation/indexer-models@0.0.5, @tonic-foundation/indexer-models@workspace:packages/models":
   version: 0.0.0-use.local
   resolution: "@tonic-foundation/indexer-models@workspace:packages/models"
   dependencies:
