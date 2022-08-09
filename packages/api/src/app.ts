@@ -9,7 +9,7 @@ import dbPlugin from './plugins/db';
 import marketUtilsPlugin from './plugins/marketUtils';
 import metricsPlugin from './plugins/metrics';
 import sentryPlugin from './plugins/sentry';
-import { apiV1Routes, makeTvRouter } from './routes';
+import { apiV1Routes, coinMarketCapV1Routes, makeTvRouter } from './routes';
 
 const config = getConfig();
 
@@ -32,7 +32,6 @@ if (config.SENTRY_URL?.length) {
 server.setErrorHandler((e, request, reply) => {
   request.log.error(`${e}`);
   if (process.env.NODE_ENV === 'development') {
-    // send raw (this is often verbose)
     reply.send(e);
   } else if (httpErrors.isHttpError(e)) {
     reply.send(e);
@@ -56,5 +55,8 @@ server.register(marketUtilsPlugin); // must be after db/cache
  */
 server.register(apiV1Routes, { prefix: '/api/v1' });
 server.register(makeTvRouter('Tonic'), { prefix: '/tv' });
+
+// coinmarketcap routes
+server.register(coinMarketCapV1Routes, { prefix: '/external/coinmarketcap/v1' });
 
 export default server;

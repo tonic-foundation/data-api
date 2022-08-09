@@ -262,7 +262,7 @@ __metadata:
     "@tonic-foundation/config": 0.0.2
     "@tonic-foundation/indexer-models": 0.0.5
     "@tonic-foundation/token": ^0.0.2
-    "@tonic-foundation/tonic": ^0.0.2
+    "@tonic-foundation/tonic": ^0.0.13
     "@tonic-foundation/utils": ^0.0.2
     "@types/bn.js": ^5.1.0
     "@types/http-errors": ^1.8.2
@@ -346,6 +346,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tonic-foundation/storage@npm:^0.0.5":
+  version: 0.0.5
+  resolution: "@tonic-foundation/storage@npm:0.0.5"
+  dependencies:
+    "@tonic-foundation/utils": 0.0.5
+    bn.js: ^5.2.0
+    near-api-js: ^0.44.2
+  checksum: 2066696ad24b904f4489891dfd520d2a08c635431bc94d6322ef9a632627677654346d2d1f171a05d24c7a6f1c80574cb881802b732daf7efb5d68a93e3fe029
+  languageName: node
+  linkType: hard
+
 "@tonic-foundation/token@npm:0.0.2, @tonic-foundation/token@npm:^0.0.2":
   version: 0.0.2
   resolution: "@tonic-foundation/token@npm:0.0.2"
@@ -356,18 +367,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tonic-foundation/tonic@npm:^0.0.2":
-  version: 0.0.2
-  resolution: "@tonic-foundation/tonic@npm:0.0.2"
+"@tonic-foundation/token@npm:^0.0.5":
+  version: 0.0.5
+  resolution: "@tonic-foundation/token@npm:0.0.5"
   dependencies:
-    "@tonic-foundation/storage": 0.0.2
-    "@tonic-foundation/token": 0.0.2
-    "@tonic-foundation/utils": 0.0.2
+    "@tonic-foundation/utils": 0.0.5
+    bn.js: ^5.2.1
+    near-api-js: ^0.44.2
+  checksum: 34a78e11f4e232cfa1f2ff08e31c9848e2d89ad9f961a91d72b1afa16c1a72652c55c300511d96bf910a4424d9246fbe70b480218f262342fd322e87a2ab9d9c
+  languageName: node
+  linkType: hard
+
+"@tonic-foundation/tonic@npm:^0.0.13":
+  version: 0.0.13
+  resolution: "@tonic-foundation/tonic@npm:0.0.13"
+  dependencies:
+    "@tonic-foundation/storage": ^0.0.5
+    "@tonic-foundation/token": ^0.0.5
+    "@tonic-foundation/utils": ^0.0.5
     bn.js: ^5.2.0
     isomorphic-ws: ^4.0.1
     near-api-js: ^0.44.2
     ws: ^8.5.0
-  checksum: 81974240f7b14472e9958797a33b8f3590b828e65e239f694eb57086e385411f58c392ae9cd9558622166bd05a1466bdc4dd9fa827c1b4750a83514c67f89842
+  checksum: 58f2709d89017d28f572cfbdd1fae7bdba8f87d19a3c63a6dd80b9f7d10a20917eef8bcc03a6096016073cdd2b45859aea74af4586cace007d66c48a68e13bb2
   languageName: node
   linkType: hard
 
@@ -393,6 +415,16 @@ __metadata:
     bn.js: ^5.2.0
     near-api-js: ^0.44.2
   checksum: 6c8153e977ed96e16c004cd87a45adab2fe20d9300b7216c5761515292c843d70191e2e2fbdda3ff9bbb6530be09c117425a77e861c3eaf541ec4315095a92a9
+  languageName: node
+  linkType: hard
+
+"@tonic-foundation/utils@npm:0.0.5, @tonic-foundation/utils@npm:^0.0.5":
+  version: 0.0.5
+  resolution: "@tonic-foundation/utils@npm:0.0.5"
+  dependencies:
+    bn.js: ^5.2.0
+    near-api-js: ^0.44.2
+  checksum: bed4c01f8c9f763d1d694b7148f81752753815e0b459aa1bde1ad61450b10cc99e0f552a2b2db64f2d2965992e789db5f5db11f1d60d7cf23cbf6898a9c76ce3
   languageName: node
   linkType: hard
 
@@ -862,7 +894,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bn.js@npm:^5.2.0":
+"bn.js@npm:^5.2.0, bn.js@npm:^5.2.1":
   version: 5.2.1
   resolution: "bn.js@npm:5.2.1"
   checksum: 3dd8c8d38055fedfa95c1d5fc3c99f8dd547b36287b37768db0abab3c239711f88ff58d18d155dd8ad902b0b0cee973747b7ae20ea12a09473272b0201c9edd3

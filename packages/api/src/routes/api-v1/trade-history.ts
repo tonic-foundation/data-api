@@ -61,7 +61,6 @@ export default function (server: FastifyInstance, _: unknown, done: () => unknow
       const { knex } = server;
       const { market, account, limit = 50, after } = request.query;
 
-      // TODO: refactor this <refactor>
       if (!market) {
         response.send(400).send({ error: 'missing market parameter' });
         return;

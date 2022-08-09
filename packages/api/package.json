@@ -41,7 +41,7 @@
     "@tonic-foundation/config": "0.0.2",
     "@tonic-foundation/indexer-models": "0.0.5",
     "@tonic-foundation/token": "^0.0.2",
-    "@tonic-foundation/tonic": "^0.0.2",
+    "@tonic-foundation/tonic": "^0.0.13",
     "@tonic-foundation/utils": "^0.0.2",
     "bn.js": "^5.2.0",
     "fastify": "^3.27.1",

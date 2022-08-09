@@ -21,6 +21,24 @@ interface ToSymbolInfoArgs {
 }
 
 /**
+ * Query for getting symbol and pricescale information about a market.
+ *
+ * Accepts one parameter, `{ symbol: string }`, which is lowercase by
+ * convention.
+ */
+const BASIC_INFO_QUERY = `
+  select
+    m.symbol,
+    round(pow(10, q.decimals)::numeric / quote_lot_size::numeric) pricescale
+  from nep_141_token b
+  join market m
+  on b.id = m.base_token_id
+  join nep_141_token q
+  on q.id = m.quote_token_id
+  where m.symbol = :symbol
+`;
+
+/**
  * Implement TradingView symbol search API.
  */
 export default function makeSymbolsHandler(exchangeName: string) {
@@ -64,20 +82,9 @@ export default function makeSymbolsHandler(exchangeName: string) {
         const key = `symbol-${symbol}`;
         let info: BasicInfo | undefined = server.cache.get(key);
         if (!info) {
-          const { rows } = await server.knex.raw<{ rows: BasicInfo[] }>(
-            `
-              select
-                m.symbol,
-                round(pow(10, q.decimals)::numeric / quote_lot_size::numeric) pricescale
-              from nep_141_token b
-              join market m
-              on b.id = m.base_token_id
-              join nep_141_token q
-              on q.id = m.quote_token_id
-              where m.symbol = :symbol
-            `,
-            { symbol: symbol.toLowerCase() }
-          );
+          const { rows } = await server.knex.raw<{ rows: BasicInfo[] }>(BASIC_INFO_QUERY, {
+            symbol: symbol.toLowerCase(),
+          });
           if (rows.length) {
             info = rows[0];
             server.cache.set(key, info);
@@ -85,7 +92,7 @@ export default function makeSymbolsHandler(exchangeName: string) {
         }
 
         if (info) {
-          const pricescale = Number(info.pricescale || '100');
+          const pricescale = Number(info.pricescale);
           response.status(200).send(
             toSymbolInfo({
               name: info.symbol,
