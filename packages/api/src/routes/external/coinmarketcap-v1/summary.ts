@@ -103,7 +103,6 @@ export default function (server: FastifyInstance, _: unknown, done: () => unknow
     handler: async (request, response) => {
       const { knex } = server;
 
-      // strictly speaking, there's no need to cache
       const key = `coinmarketcap-summary`;
       let summary = server.cache.getTimed(key);
       if (!summary) {

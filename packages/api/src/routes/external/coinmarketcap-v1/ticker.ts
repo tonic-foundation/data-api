@@ -79,8 +79,7 @@ export default function (server: FastifyInstance, _: unknown, done: () => unknow
     handler: async (_, response) => {
       const { knex } = server;
 
-      // strictly speaking, there's no need to cache
-      const key = `coinmarketcap-summary`;
+      const key = `coinmarketcap-ticker`;
       let tickers = server.cache.getTimed(key);
       if (!tickers) {
         const { rows } = await knex.raw<{ rows: RawTickerSummary[] }>(TICKER_QUERY);
