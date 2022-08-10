@@ -143,7 +143,7 @@ export default function (server: FastifyInstance, _: unknown, done: () => unknow
             } as Summary;
           })
         );
-        server.cache.setTimed(key, summary, 60_000 * 5);
+        server.cache.setTimed(key, summary, 60_000 * 10);
       }
 
       response.status(200).send(summary);

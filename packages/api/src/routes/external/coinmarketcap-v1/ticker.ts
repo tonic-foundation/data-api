@@ -2,6 +2,7 @@
 // 24h summary of all supported tickers.
 import { FastifyInstance } from 'fastify';
 import { ForceProperties } from '../../../types/util';
+import { toExternalSymbol } from './helper';
 
 /**
  * Query for Ticker endpoint. Accepts no parameters.
@@ -83,24 +84,18 @@ export default function (server: FastifyInstance, _: unknown, done: () => unknow
       let tickers = server.cache.getTimed(key);
       if (!tickers) {
         const { rows } = await knex.raw<{ rows: RawTickerSummary[] }>(TICKER_QUERY);
-
         tickers = Object.fromEntries(
           rows.map((r) => {
-            const ticker = r.trading_pairs.replaceAll('/', '_').toUpperCase();
-            // coinmarketcap uses _ to delimit, eg ETH_BTC
-
+            const ticker = toExternalSymbol(r.trading_pairs);
             const summary: TickerSummary = {
               base_volume: r.base_volume,
               quote_volume: r.quote_volume,
               last_price: r.last_price || '0',
               isFrozen: '0',
             };
-
             return [ticker, summary] as const;
           })
         );
-
-        // expensive request due to dependency on near rpc. 10 minute cache
         server.cache.setTimed(key, tickers, 60_000 * 10);
       }
 

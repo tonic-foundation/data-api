@@ -11,5 +11,5 @@ export function toInternalSymbol(s: string) {
  * used by CoinMarketCap, ie, ETH_USDC.
  */
 export function toExternalSymbol(s: string) {
-  return s.replace('/', '_').toUpperCase(); // coinmarketcap uses _ to delimit, eg ETH_BTC
+  return s.replace('/', '_').toUpperCase();
 }

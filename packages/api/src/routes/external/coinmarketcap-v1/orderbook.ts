@@ -50,8 +50,6 @@ export default function (server: FastifyInstance, _: unknown, done: () => unknow
 
       if (!ob) {
         const tonic = await getTonicClient();
-        // coinmarketcap delimits with _ eg NEAR_USDC but we use / eg near/usdc.
-        // we further assume symbols in our db are lowercase
         const symbol = toInternalSymbol(market_pair);
         const info = await server.knex<Market>('market').first('id').where('symbol', symbol);
         if (!info) {
@@ -64,7 +62,6 @@ export default function (server: FastifyInstance, _: unknown, done: () => unknow
         asks.reverse();
         ob = { timestamp: Date.now(), bids, asks } as Response;
 
-        // expensive request due to dependency on near rpc. 10 minute cache
         server.cache.setTimed(key, ob, 60_000 * 10);
       }
 
