@@ -10,7 +10,7 @@ yarn add @tonic-foundation/data-client
 
 ## Examples
 
-```
+```typescript
 (async () => {
   const indexer = new TonicIndexer('https://data-api.mainnet.tonic.foundation');
 
@@ -29,9 +29,11 @@ yarn add @tonic-foundation/data-client
 ```
 
 ## Running the data API
+
 Run an instance of the [Tonic indexer](https://github.com/tonic-foundation/tonic-indexer).
 
 Set the following environment variables.
+
 ```
 # Point to the same DB as the indexer. A read-only user is OK.
 export POSTGRES_CONNECTION=postgresql://...
@@ -47,9 +49,11 @@ Base64-encode the cert and set it in the evironment as
 ```
 export POSTGRES_CA_CERT=Ls0tLS1...
 ```
+
 </details>
 
 Start the API.
+
 ```
 # build the server
 yarn build:all
@@ -62,8 +66,10 @@ yarn api start
 ```
 
 ## Listing a market
+
 Set postgres connection details as shown above (write user required)
-```
+
+```bash
 # Add tokens used by the market. Tokens only need to be added once.
 NEAR_ENV=mainnet yarn api add-token --token_id usn # token ID is contract ID
 NEAR_ENV=mainnet yarn api add-token --token_id near # "near" allowed for native near
@@ -76,4 +82,5 @@ yarn api set-visibility --symbol foo/usdc --visibility true
 ```
 
 ## Known issues
+
 - Migrations are all in the indexer repo. We'll combine the two repos in the future.
